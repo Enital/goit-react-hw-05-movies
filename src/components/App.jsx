@@ -1,42 +1,51 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Link, useParams } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { api } from "./Functions/Api";
 import Home from "Pages/Home";
 import Movies from "Pages/Movies";
+import { Layout } from "./Layout/Layout";
+import MoviesSearch from "./MoviesSearch/MoviesSearch";
+import Casts from "./Casts/Casts";
+import Reviews from "./Reviews/Reviews";
 
 export const App = () => {
-  const [films, setFilms] = useState({})
+  // const [films, setFilms] = useState({})
 
-  useEffect(() => {
-    const getAPI = async () => {
-      try {
-        const data = await api();
-        // console.log(data)
-        setFilms(data);
-        console.log(films);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        return;
-      }
-    }
+  // useEffect(() => {
+  //   const getAPI = async () => {
+  //     try {
+  //       const data = await api();
+  //       // console.log(data)
+  //       setFilms(data);
+  //       console.log(films);
+  //     } catch (error) {
+  //       console.log(error);
+  //     } finally {
+  //       return;
+  //     }
+  //   }
 
 
-    getAPI();
-  },[])
+  //   getAPI();
+  // },[])
   
   
   // const {results}= films
   return (
     <div>
-      <nav>
-        <Link to ="/">Home</Link>
-        <Link to="/movies">Movies</Link>
-      </nav>
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          {/* <Route path="/:movieId" element={<Movies /> } /> */}
+          <Route path="/movies" element={<MoviesSearch />} />
+          <Route path="/:movieId" element={<Movies />} />
+          <Route>
+            <Route path="cast" element={<Casts />} />
+            <Route path="reviews" element={<Reviews/> } />
+          </Route>
+          {/* <Route path="*" element={<NotFound />} /> */}
+        </Route>
       </Routes>
     </div>
   );
