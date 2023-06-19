@@ -14,3 +14,7 @@ export const App = () => {
     </div>
   );
 };
+
+// <BrowserRouter basename="/your_repo_name">
+//   <App />
+// </BrowserRouter>
