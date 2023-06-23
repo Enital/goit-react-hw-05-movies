@@ -1,22 +1,23 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchTrendingMovies } from "components/Functions/MoviesApi";
+// import MoviesList from "components/MoviesList/MoviesList";
+import css from './home.module.css'
+import Loader from "components/Loader/Loader";
 
 const Home = () => {
     const [movies, setMovies] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        
 
         async function getMovies() {
             try {
-                setIsLoading(true);
                 const data = await fetchTrendingMovies();
                 setMovies(data);
                 console.log(data);
             } catch (error) {
-                console.log(error)
+                console.log(error);
             } finally {
                 setIsLoading(false);
             }
@@ -28,18 +29,26 @@ const Home = () => {
 
 
     return (
-        <div>
+        <>
+        <div className={css.section}>
             <h1>Trending today</h1>
             <div>
-                {['m1', 'm2', ['m3'], ['m4'], ['m5']].map(movie => {
-                    return (
-                        <Link key={movie} to={`${movie}`}>
-                            {movie}
-                        </Link>
-                    )
-                })}
+                <ul className={css.films}>
+                    {movies.map(movie => {
+                        return (
+                            <li key={movie.id} className={css.filmsList}>
+                                <Link to={`movies/${movie.id}`}>
+                                    <span> {movie.title}</span>
+                                </Link>
+                            </li>
+                            // <MoviesList key={movie.id} movies={movies} id={movie.id } title={movie.title} />
+                        )
+                    })}
+                </ul>
             </div>
-        </div>
+            </div>
+            {isLoading&&<Loader />}
+        </>
     )
 };
 
