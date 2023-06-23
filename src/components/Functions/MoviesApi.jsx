@@ -90,7 +90,8 @@ export const fetchMovieCast = async movieId => {
   const { data } = await axios.get(
     `${BASE_URL}movie/${movieId}/credits`,
     options
-  );
+    );
+    console.log(data);
   return data.cast;
 };
 

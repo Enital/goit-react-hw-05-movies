@@ -7,9 +7,9 @@ import { Route } from "react-router-dom";
 // import { useParams } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
-import css from './movies.module.css'
+import css from './MoviesSearch.module.css'
 
-const Movies = () => {
+const MoviesSearch = () => {
     // const { movieId } = useParams();
 
     return (
@@ -22,4 +22,4 @@ const Movies = () => {
     )
 }
 
-export default Movies;
+export default MoviesSearch;

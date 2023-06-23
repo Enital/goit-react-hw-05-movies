@@ -1,0 +1,27 @@
+h2,h3,h4,p{
+    padding: 0;
+    margin: 5px;
+}
+.sectionDetails{
+    padding: 10px;
+}
+.movieDetail{
+    display: flex;
+    padding-bottom: 5px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+}
+
+.movieInfo{
+    margin-left: 10px;
+}
+/* .title{
+    margin-bottom: 10px;
+} */
+.genres{
+    display: flex;
+}
+.addInfo{
+    padding: 5px 10 px;
+    background-color: brown;
+    border-radius: 8px;
+}

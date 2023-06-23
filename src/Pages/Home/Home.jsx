@@ -15,7 +15,7 @@ const Home = () => {
             try {
                 const data = await fetchTrendingMovies();
                 setMovies(data);
-                console.log(data);
+                // console.log(data);
             } catch (error) {
                 console.log(error);
             } finally {
@@ -30,24 +30,24 @@ const Home = () => {
 
     return (
         <>
-        <div className={css.section}>
-            <h1>Trending today</h1>
-            <div>
-                <ul className={css.films}>
-                    {movies.map(movie => {
-                        return (
-                            <li key={movie.id} className={css.filmsList}>
-                                <Link to={`movies/${movie.id}`}>
-                                    <span> {movie.title}</span>
-                                </Link>
-                            </li>
-                            // <MoviesList key={movie.id} movies={movies} id={movie.id } title={movie.title} />
-                        )
-                    })}
-                </ul>
+            <div className={css.section}>
+                <h1>Trending today</h1>
+                <div>
+                    <ul className={css.films}>
+                        {movies.map(movie => {
+                            return (
+                                <li key={movie.id} className={css.filmsList}>
+                                    <Link to={`movies/${movie.id}`}>
+                                        <span> {movie.title}</span>
+                                    </Link>
+                                </li>
+                                // <MoviesList key={movie.id} movies={movies} id={movie.id } title={movie.title} />
+                            )
+                        })}
+                    </ul>
+                </div>
             </div>
-            </div>
-            {isLoading&&<Loader />}
+            {isLoading && <Loader />}
         </>
     )
 };
