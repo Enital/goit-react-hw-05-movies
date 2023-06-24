@@ -10,18 +10,25 @@ h2,h3,h4,p{
     padding-bottom: 5px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
 }
-
+.list{
+    margin-left: 15px;
+    padding-left: 0;
+    display: flex;
+    list-style: none;
+}
 .movieInfo{
     margin-left: 10px;
 }
-/* .title{
-    margin-bottom: 10px;
-} */
+.addInfoSub{
+    text-decoration: none;
+}
 .genres{
     display: flex;
 }
-.addInfo{
-    padding: 5px 10 px;
+.addLink{
+    margin-right: 10px;
+    padding: 5px 10px;
+    color: yellowgreen;
     background-color: brown;
     border-radius: 8px;
 }

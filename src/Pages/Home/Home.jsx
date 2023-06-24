@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchTrendingMovies } from "components/Functions/MoviesApi";
-// import MoviesList from "components/MoviesList/MoviesList";
 import css from './home.module.css'
 import Loader from "components/Loader/Loader";
 
@@ -15,7 +14,6 @@ const Home = () => {
             try {
                 const data = await fetchTrendingMovies();
                 setMovies(data);
-                // console.log(data);
             } catch (error) {
                 console.log(error);
             } finally {
@@ -24,14 +22,14 @@ const Home = () => {
         }
 
         getMovies()
-        
+
     }, []);
 
 
     return (
         <>
             <div className={css.section}>
-                <h1>Trending today</h1>
+                <h1 className={css.titleH}>Trending today</h1>
                 <div>
                     <ul className={css.films}>
                         {movies.map(movie => {
@@ -41,7 +39,6 @@ const Home = () => {
                                         <span> {movie.title}</span>
                                     </Link>
                                 </li>
-                                // <MoviesList key={movie.id} movies={movies} id={movie.id } title={movie.title} />
                             )
                         })}
                     </ul>

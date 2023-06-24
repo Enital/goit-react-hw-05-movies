@@ -7,14 +7,13 @@ function Header() {
     
     return (
         <header className={css.header}>
-            <ul>
+            <ul className={css.headerUl}>
                 <li className={css.navItem}>
                     <NavLink to="/">
-                        {/* Home */}
                         <span className={css.page}>Home</span>
                     </NavLink>
                 </li>
-                <li>
+                <li className={css.navItem}>
                     <NavLink to="/movies">
                         <span className={css.page}>Movies</span>
                     </NavLink>

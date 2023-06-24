@@ -1,6 +1,6 @@
 import Loader from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import { fetchMoviesId } from '../../components/Functions/MoviesApi';
 
 import css from './movieDetails.module.css';
@@ -27,14 +27,10 @@ function MovieDetails() {
         
     }, [movieId]);
 
-    // const location = useLocation();
-    // const backLinkHref = location.state?.from ?? '/';
-
     return (
         movie && (
             <>
                 <div className={css.sectionDetails} >
-                    {/* <GoBackLink to={backLinkHref}>&larr; Go back</GoBackLink> */}
                     <div className={css.movieDetail}>
                         <img
                             width="200px"
@@ -56,22 +52,20 @@ function MovieDetails() {
                         </div>
                     </div>
                     <h4>Additional information</h4>
-                    <ul>
+                    <ul className={css.list}>
                         <li className={css.addInfo}>
-                            <Link to="cast">
-                                <span>Cast</span>
+                            <Link to="cast" className={css.addInfoSub}>
+                                <span className={css.addLink}>Cast</span>
                             </Link>
                         </li>
                         <li className={css.addInfo}>
-                            <Link to="reviews">
-                                <span>Reviews</span>
+                            <Link to="reviews" className={css.addInfoSub}>
+                                <span className={css.addLink}>Reviews</span>
                             </Link>
                         </li>
                     </ul>
-                    {/* <Suspense fallback={<div>Loading page...</div>}> */}
-                    {/* <Outlet /> */}
-                    {/* </Suspense> */}
                 </div>
+                <Outlet/>
                 {isLoading && <Loader />}
             </>
         )
