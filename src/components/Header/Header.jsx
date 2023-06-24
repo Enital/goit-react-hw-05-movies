@@ -8,8 +8,9 @@ function Header() {
     return (
         <header className={css.header}>
             <ul>
-                <li>
+                <li className={css.navItem}>
                     <NavLink to="/">
+                        {/* Home */}
                         <span className={css.page}>Home</span>
                     </NavLink>
                 </li>

@@ -26,7 +26,3 @@ li:first-child{
 .page{
     padding: 5px 10px;
 }
-.active{
-    color: brown;
-    /* background-color: blueviolet; */
-}
