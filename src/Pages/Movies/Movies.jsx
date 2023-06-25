@@ -5,6 +5,8 @@ import MoviesList from 'components/MoviesList/MoviesList';
 import { Notify } from 'notiflix';
 import Loader from 'components/Loader/Loader';
 
+import css from './movie.module.css'
+
 function Movies() {
     const [urlParams, setUrlParams] = useSearchParams({});
     const [isLoading, setIsLoading] = useState(true);
@@ -46,7 +48,7 @@ function Movies() {
 
     return (
         <>
-            <form onSubmit={onFormSubmit}>
+            <form onSubmit={onFormSubmit} className={css.formMovie}>
                 <input type='text' value={queryString} onChange={onInputChange} />
                 <button type='submit'>
                     Search

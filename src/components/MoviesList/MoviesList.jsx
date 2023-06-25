@@ -12,7 +12,7 @@ const MoviesList = ({ movies }) => {
                             <li key={id}>
                                 <span >
                                 </span>
-                                <Link to={`/movies/${id}/cast`} state={{ from: location }}>
+                                <Link to={`/movies/${id}`} state={{ from: location }}>
                                     {title}
                                 </Link>
                             </li>

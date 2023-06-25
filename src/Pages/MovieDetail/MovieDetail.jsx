@@ -1,5 +1,5 @@
 import Loader from 'components/Loader/Loader';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
 import { fetchMoviesId } from '../../components/Functions/MoviesApi';
 
@@ -12,7 +12,7 @@ function MovieDetails() {
 
     const navigate = useNavigate();
 
-    const goHomeHandler = () => navigate('/');
+    const goHomeHandler = () => navigate(-1);
 
     useEffect(() => {
 
@@ -70,7 +70,9 @@ function MovieDetails() {
                         </li>
                     </ul>
                 </div>
-                <Outlet/>
+                <Suspense fallback={<Loader />}>
+                    <Outlet />
+                </Suspense>
                 {isLoading && <Loader />}
             </>
         )
