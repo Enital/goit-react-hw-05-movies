@@ -18,9 +18,13 @@ a {
   text-decoration: none;
   color: black;
 }
-a.active {
-  color: brown;
+a.active>span {
+  color: yellowgreen;
   font-weight: 700;
+  padding: 5px 10px;
+  background-color: brown;
+  border-radius: 8px;
+  transition: all 500ms;
 }
 li {
   list-style-type: none;

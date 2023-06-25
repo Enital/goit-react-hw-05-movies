@@ -10,4 +10,12 @@
 }
 .movieTitle{
     color: black;
+    transition: all 500ms;
+    padding: 0 5px 2px 5px;
+    border-radius: 5px;
+}
+.movieTitle:hover,
+.movieTitle:focus{
+    color:  rgb(169, 257, 54);
+    background-color: brown;
 }
