@@ -18,6 +18,9 @@ a {
   text-decoration: none;
   color: black;
 }
+a>span{
+  color: rgb(0, 0, 0, .7);
+}
 a.active>span {
   color: yellowgreen;
   font-weight: 700;
