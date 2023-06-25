@@ -1,6 +1,6 @@
 import Loader from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
 import { fetchMoviesId } from '../../components/Functions/MoviesApi';
 
 import css from './movieDetails.module.css';
@@ -9,6 +9,10 @@ function MovieDetails() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+
+    const navigate = useNavigate();
+
+    const goHomeHandler = () => navigate('/');
 
     useEffect(() => {
 
@@ -31,6 +35,7 @@ function MovieDetails() {
         movie && (
             <>
                 <div className={css.sectionDetails} >
+                    <button className={css.goBack} onClick={goHomeHandler}>Go back</button>
                     <div className={css.movieDetail}>
                         <img
                             width="200px"

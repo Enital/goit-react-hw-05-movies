@@ -29,6 +29,22 @@ h2,h3,h4,p{
     margin-right: 10px;
     padding: 5px 10px;
     color: yellowgreen;
+    /* color: yellow; */
     background-color: brown;
     border-radius: 8px;
+    transition: all 500ms;
+}
+.addLink:hover, .goBack:hover,
+.addLink:focus, .goBack:focus{
+    box-shadow: rgba(165, 42, 42, 0.8) 0px 4px 16px, rgba(165, 42, 42, 0.4) 0px 8px 32px;
+}
+.goBack{
+    background-color: brown;
+    color: yellowgreen;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 10px;
+    margin: 0 0 15px 30px;
+    cursor:pointer;
+    transition: all 500ms;
 }
