@@ -8,6 +8,7 @@ h2,h3,h4,p{
 .movieDetail{
     display: flex;
     padding-bottom: 5px;
+    margin-top: 15px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
 }
 .list{
@@ -45,6 +46,6 @@ h2,h3,h4,p{
     border-radius: 8px;
     padding: 7px 10px;
     margin: 0 0 15px 30px;
-    cursor:pointer;
+    cursor: pointer;
     transition: all 500ms;
 }

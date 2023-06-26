@@ -1,6 +1,6 @@
 import Loader from 'components/Loader/Loader';
 import { Suspense, useEffect, useState } from 'react';
-import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetchMoviesId } from '../../components/Functions/MoviesApi';
 
 import css from './movieDetails.module.css';
@@ -9,11 +9,17 @@ function MovieDetails() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    
+    const location = useLocation();
+    const prevLocation = location.state.from;
+    let backLink = '';
 
-    const navigate = useNavigate();
-
-    const goHomeHandler = () => navigate(-1);
-
+    if (location.state.from.pathname.includes('movies')) {
+            backLink = '/movies';
+    } else {
+        backLink = '/';
+    }
+    
     useEffect(() => {
 
         async function getMovies() {
@@ -31,11 +37,12 @@ function MovieDetails() {
         
     }, [movieId]);
 
+
     return (
         movie && (
             <>
                 <div className={css.sectionDetails} >
-                    <button className={css.goBack} onClick={goHomeHandler}>Go back</button>
+                    <Link className={css.goBack} to={backLink}>Go back</Link>
                     <div className={css.movieDetail}>
                         <img
                             width="200px"
@@ -59,12 +66,12 @@ function MovieDetails() {
                     <h4>Additional information</h4>
                     <ul className={css.list}>
                         <li className={css.addInfo}>
-                            <Link to="cast" className={css.addInfoSub}>
+                            <Link to="cast" className={css.addInfoSub} state={{from: prevLocation}}>
                                 <span className={css.addLink}>Cast</span>
                             </Link>
                         </li>
                         <li className={css.addInfo}>
-                            <Link to="reviews" className={css.addInfoSub}>
+                            <Link to="reviews" className={css.addInfoSub} state={{from: location}}>
                                 <span className={css.addLink}>Reviews</span>
                             </Link>
                         </li>

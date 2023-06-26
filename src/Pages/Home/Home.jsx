@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { fetchTrendingMovies } from "components/Functions/MoviesApi";
 import css from './home.module.css'
 import Loader from "components/Loader/Loader";
@@ -8,6 +8,8 @@ const Home = () => {
     const [movies, setMovies] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
+    const location = useLocation();
+    // console.log(location)
     useEffect(() => {
 
         async function getMovies() {
@@ -35,7 +37,7 @@ const Home = () => {
                         {movies.map(movie => {
                             return (
                                 <li key={movie.id} className={css.filmsList}>
-                                    <Link to={`movies/${movie.id}`}>
+                                    <Link to={`movies/${movie.id}`} state={{from: location}}>
                                         <span className={css.movieTitle}> {movie.title}</span>
                                     </Link>
                                 </li>

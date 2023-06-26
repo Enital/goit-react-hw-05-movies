@@ -1,7 +1,6 @@
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const MoviesList = ({ movies }) => {
-    const location = useLocation();
+const MoviesList = ({ movies, backPage }) => {
 
     return (
         <>
@@ -12,7 +11,7 @@ const MoviesList = ({ movies }) => {
                             <li key={id}>
                                 <span >
                                 </span>
-                                <Link to={`/movies/${id}`} state={{ from: location }}>
+                                <Link to={`/movies/${id}`} state={{from: backPage}}>
                                     {title}
                                 </Link>
                             </li>

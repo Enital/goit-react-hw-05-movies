@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import { fetchMovieSearch } from '../../components/Functions/MoviesApi';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { Notify } from 'notiflix';
@@ -14,6 +14,8 @@ function Movies() {
     const [moviesList, setMoviesList] = useState([]);
     const query = urlParams.get('search');
     const [queryString, setQueryString] = useState(query ? query : '');
+
+    const location = useLocation();
     
 
     function onInputChange(e) {
@@ -23,6 +25,7 @@ function Movies() {
     async function onFormSubmit(e) {
         e.preventDefault();
         setUrlParams(queryString.trim() !== '' ? { search: queryString } : {});
+
 
         if (queryString.trim() === '') {
             Notify.warning('Please enter movie title to search');
@@ -35,7 +38,6 @@ function Movies() {
             try {
                 if (!query) return;
                 const data = await fetchMovieSearch(query);
-                console.log(data);
                 setMoviesList(data);
 
                 if (data.length === 0) Notify.failure('Sorry, this movie not found');
@@ -55,7 +57,7 @@ function Movies() {
                 </button>
             </form>
 
-            <MoviesList movies={moviesList} />
+            <MoviesList movies={moviesList} backPage={ location} />
             {isLoading && <Loader />}
         </>
     );
