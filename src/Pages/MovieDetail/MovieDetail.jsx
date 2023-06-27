@@ -1,5 +1,5 @@
 import Loader from 'components/Loader/Loader';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState, useRef } from 'react';
 import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetchMoviesId } from '../../components/Functions/MoviesApi';
 
@@ -11,14 +11,7 @@ function MovieDetails() {
     const [isLoading, setIsLoading] = useState(true);
     
     const location = useLocation();
-    const prevLocation = location.state.from;
-    let backLink = '';
-
-    if (location.state.from.pathname.includes('movies')) {
-            backLink = '/movies';
-    } else {
-        backLink = '/';
-    }
+    const goBackRef=useRef(location.state?.from ?? '/')
     
     useEffect(() => {
 
@@ -37,12 +30,11 @@ function MovieDetails() {
         
     }, [movieId]);
 
-
     return (
         movie && (
             <>
                 <div className={css.sectionDetails} >
-                    <Link className={css.goBack} to={backLink}>Go back</Link>
+                    <Link className={css.goBack} to={goBackRef.current}>Go back</Link>
                     <div className={css.movieDetail}>
                         <img
                             width="200px"
@@ -66,12 +58,12 @@ function MovieDetails() {
                     <h4>Additional information</h4>
                     <ul className={css.list}>
                         <li className={css.addInfo}>
-                            <Link to="cast" className={css.addInfoSub} state={{from: prevLocation}}>
+                            <Link to="cast" className={css.addInfoSub}>
                                 <span className={css.addLink}>Cast</span>
                             </Link>
                         </li>
                         <li className={css.addInfo}>
-                            <Link to="reviews" className={css.addInfoSub} state={{from: location}}>
+                            <Link to="reviews" className={css.addInfoSub}>
                                 <span className={css.addLink}>Reviews</span>
                             </Link>
                         </li>

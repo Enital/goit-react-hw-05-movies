@@ -27,7 +27,6 @@ const Home = () => {
 
     }, []);
 
-
     return (
         <>
             <div className={css.section}>
@@ -37,7 +36,11 @@ const Home = () => {
                         {movies.map(movie => {
                             return (
                                 <li key={movie.id} className={css.filmsList}>
-                                    <Link to={`movies/${movie.id}`} state={{from: location}}>
+                                    <Link to={`movies/${movie.id}`} state={{ from: location }}>
+                                        {/* <img className={css.imgHome}
+                                            src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                                            alt={movie.title}
+                                        /> */}
                                         <span className={css.movieTitle}> {movie.title}</span>
                                     </Link>
                                 </li>

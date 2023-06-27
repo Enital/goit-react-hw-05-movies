@@ -9,14 +9,11 @@ import css from './movie.module.css'
 
 function Movies() {
     const [urlParams, setUrlParams] = useSearchParams({});
-    const [isLoading, setIsLoading] = useState(true);
-    
-    const [moviesList, setMoviesList] = useState([]);
     const query = urlParams.get('search');
     const [queryString, setQueryString] = useState(query ? query : '');
-
+    const [moviesList, setMoviesList] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const location = useLocation();
-    
 
     function onInputChange(e) {
         setQueryString(e.target.value);
@@ -48,6 +45,7 @@ function Movies() {
         getData();
     }, [query]);
 
+    // console.log(urlParams(search))
     return (
         <>
             <form onSubmit={onFormSubmit} className={css.formMovie}>
@@ -57,7 +55,7 @@ function Movies() {
                 </button>
             </form>
 
-            <MoviesList movies={moviesList} backPage={ location} />
+            <MoviesList movies={moviesList} backPage={location} />
             {isLoading && <Loader />}
         </>
     );
