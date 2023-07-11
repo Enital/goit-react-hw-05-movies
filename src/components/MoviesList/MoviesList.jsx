@@ -11,7 +11,9 @@ const MoviesList = ({ movies, backPage }) => {
                             <li key={id}>
                                 <span >
                                 </span>
-                                <Link to={`/movies/${id}`} state={{from: backPage}}>
+                                <Link to={`/movies/${id}`} state={{ from: backPage }}>
+                                {/* <img src={IMAGE_URL.concat(poster_path)} alt="" />
+            <MovieName>{title ?? original_name}</MovieName> */}
                                     {title}
                                 </Link>
                             </li>

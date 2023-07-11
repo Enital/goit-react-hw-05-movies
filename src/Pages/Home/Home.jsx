@@ -9,7 +9,6 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     const location = useLocation();
-    // console.log(location)
     useEffect(() => {
 
         async function getMovies() {
@@ -36,11 +35,11 @@ const Home = () => {
                         {movies.map(movie => {
                             return (
                                 <li key={movie.id} className={css.filmsList}>
-                                    <Link to={`movies/${movie.id}`} state={{ from: location }}>
-                                        {/* <img className={css.imgHome}
+                                    <Link to={`movies/${movie.id}`} state={{ from: location }} className={css.homeLink}>
+                                        <img className={css.imgHome}
                                             src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                                             alt={movie.title}
-                                        /> */}
+                                        />
                                         <span className={css.movieTitle}> {movie.title}</span>
                                     </Link>
                                 </li>
